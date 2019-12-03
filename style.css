@@ -1,0 +1,188 @@
+    body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  /*.bg-1 { 
+    background-image: url(homepage.png);
+    background-size: cover; 
+    color: #ffffff;
+    height: 500px;
+  }*/
+  .navbar-brand1{
+    float: left;
+    padding: 15px 15px;
+    font-size: 30px;
+    line-height: 20px;
+    color: #FF9900;
+  }
+  /*.navbar-right{
+    display: inline-block;
+  }*/
+  .ya{
+    color: #FF9900;
+  }
+  .item img{
+  }
+  .glyphicon1 {
+    background: #00FFDC;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: 400;
+    /*line-height: 1;*/
+    -webkit-font-smoothing: antialiased;
+    /*-webkit-transform: rotate(180deg);*/
+    /*-moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);*/
+    transform: rotate(180deg);
+  }
+  .glyphicon2 {
+    background: #00FFDC;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    position: relative;
+    top: 50%;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: 400;
+    /*line-height: 1;*/
+    -webkit-font-smoothing: antialiased;
+  }
+  .bg-2 { 
+    background-color: white; 
+    color: black;
+  }
+    .bg-2 .left .caption p{
+      font-size: 12px;
+      text-align: left;
+    }
+    .bg-2 .left .caption h3{
+      text-align: left;
+    } 
+    .bg-2 .konten img{
+      height: 100%;
+      width: 100%;
+    }
+  .bg-3 { 
+    background-color: white; 
+    color: black;
+    border-top: 1px solid grey;
+    padding: 20%;
+  }
+    .bg-3 .konten #nama{
+      color: blue;
+      font-weight: bold;
+    }
+  .bg-4 { 
+    background-color: #ffffff;
+    color: black;
+    border-top: 1px solid grey;
+  }
+    .bg-4 h5{
+      color: #8D8D8D;
+    }
+    .bg-4 .konten{
+    display: block;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+    }
+    .bg-4 .konten img{
+        height: 100%;
+        width: 100%;
+      }
+    .bg-4 .konten #nama{
+      color: blue;
+    }
+  .bg-5 { 
+    background-color: white; 
+    color: black;
+  }
+    .bg-5 h5{
+      color: #8D8D8D;
+    }
+    .bg-5 .thumbnail{
+        background-color: #F4F4F4;
+        padding-top: 20px;
+    }
+      .bg-5 .thumbnail img{
+        height: 70px;
+        width: 70px;
+        border-radius: 50px;
+      }
+      .thumbnail #nama{
+        color: blue;
+        font-weight: bold;
+      }
+  .bg-6 { 
+    background-image: url(Alam.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    height: 500px;
+  }
+  .bg-6 h1{
+    padding-top: 350px;  
+  }
+  .bg-6 button{
+    background-color: #08AEEA;
+    border: 0px;
+    width: 150px;
+    border-radius: 20px;
+  }
+  .bg-6 button a{
+    color: white;
+    text-decoration: 
+  }
+  .bg-7 { 
+    background-color: black; 
+    padding-left: 150px !important; 
+  }
+  .bg-7 p{
+    color: #555555;
+  }
+  .bg-8 { 
+    background-color: black; 
+    color: #fff;
+    border-top: 1px solid white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .navbar1 {
+        position: relative;
+    min-height: 50px;
+    /*margin-bottom: 20px;*/
+    border: 1px solid transparent;
+  }
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
