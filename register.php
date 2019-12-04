@@ -1,14 +1,19 @@
-<?php 
+<?php
 include_once('db-con.php');
 $database = new database();
+if(isset($_SESSION['is_login']))
+{
+  header('location:index.php');
+}
 if(isset($_POST['register']))
 {
     $email = $_POST['email'];
     $name = $_POST['name'];
+    $telp = $_POST['telp'];
     $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-    if($database->register($name,$email,$password))
+    if($database->register($name,$email,$telp,$password))
     {
-        header('location:index1.php');
+        header('location:index.php');
     }
 }
 
@@ -21,14 +26,13 @@ if(isset($_POST['register']))
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bootstrap.min.css">
-  <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> -->
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="jquery.min.js"></script>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
   <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/bootstrap1.min.css">
   <script src="js/jquery1.min.js"></script>
   <script src="js/bootstrap2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 </head>
 <style>
   body {font-family: Arial, Helvetica, sans-serif;}
@@ -104,69 +108,43 @@ button:hover {
 <body>
 
 <!-- Navbar -->
-<nav class="navbar1 navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button> -->
-      <a class="navbar-brand1" href="#">Den</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="ya" href="#">Beranda</a></li>
-        <li><a href="#">Cari Den</a></li>
-        <li><a href="#">Tentang Den</a></li>
-        <li><a href="#">Masuk</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<?php include "header.php";?>
 
 <div class="container-fluid bg-3">
-  <div class="col-md-4">
-      <div class="konten">
-        <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-          <!-- <img src="Star.png">
-          <div class="caption">
-            <h2 id="nama">666</h2>
-            <p>Homestay Seekers</p>
-          </div> -->
-        <!-- </a> -->
-      </div>
-    </div>
-    <div class="col-md-4" style="padding-top: 200px;">
-      <div class="konten">
+    <div class="col-md-6" style="padding-top: 200px;">
+      <div class="konten user-input">
         <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
           <div class="caption">
             <p>Daftar ke Den</p>
             <h2 id="reg">Sign Up</h2>
           </div>
-          <img src="yeh.png">
+          <img src="img/yeh.png">
         <!-- </a> -->
       </div>
     </div>
-    <div class="col-md-4">
-       <form method="post" action="" style="border:1px solid #ccc; width: 360px; border-radius: 5px; background-color:#f1f1f1 ">
+    <div class="col-md-6">
+       <form method="post" action="" style="border:1px solid #ccc; width: 360px; border-radius: 5px; background-color:#f1f1f1" name="register">
           <div class="biodata" style="padding: 20px;">
             <!-- <h1>Daftar</h1>
             <p>Silakan isi formulir ini untuk membuat akun.</p> -->
             <br>
 
             <label for="email"><b>E-mail</b></label>
-            <input type="text" placeholder="Enter E-mail" name="email" required>
+            <input type="text" placeholder="Enter E-mail" name="email" required><br>
 
             <label for="name"><b>Name</b></label>
-            <input type="text" placeholder="Enter Name" name="name" required>
+            <input type="text" placeholder="Enter Name" name="name" required><br>
 
+            <label for="telp"><b>No. Telp</b></label>
+            <input type="text" placeholder="Enter Phone Number" name="telp" required><br>
+            
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" placeholder="Enter Password" name="password" required><br>
             
             <label>
               <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
             </label>
+            <p>Sudah punya akun? <a href="login.php" style="color:dodgerblue">login</a></p>
 
             <div class="clearfix">
               <button type="submit" name="register" class="signupbtn">Sign Up</button>
@@ -177,18 +155,51 @@ button:hover {
   </div>
 </div>
 
-<!-- Seventh Container -->
-<div class="container-fluid bg-7">
-  <h3>Alamat</h3>
-  <p>Jl. Raya Kampus Unud<br>Bukit Jimbaran, Badung</p>
-  <h3>Telp</h3>
-  <p>081999877909</p>
-</div>
-
-<!-- Footer -->
-<footer class="bg-8 text-center">
-  <p>Den</a></p> 
-</footer>
+<?php include "footer.php";?>
 
 </body>
+<script>
+$(function() {
+  $('form[name="register"]').validate({
+    rules: {
+      email: {
+        required: true,
+        email: true
+      },
+      name: {
+        required: true,
+        name: true
+      },
+      password: {
+        required: true,
+        minlength: 8
+      },
+      telp: {
+        required: true,
+        phoneno: true
+      }
+    },
+    messages: {
+      password: {
+        required: "Password belum diisi",
+        minlength: "Password harus lebih dari 8 karakter"
+      },
+      email: {
+        required: "Email belum diisi",
+        email: "Email tidak valid"
+      },
+      name: {
+        required: "Nama belum diisi"
+      },
+      telp:{
+        required: "Nomor telepon belum diisi",
+        telp: "Nomor telepon tidak valid"
+      }
+    },
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+</script>
 </html>

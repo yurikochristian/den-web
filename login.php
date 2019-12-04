@@ -5,7 +5,7 @@ $database = new database();
 
 if(isset($_SESSION['is_login']))
 {
-    header('location:index1.php');
+    header('location:index.php');
 }
 
 if(isset($_POST['login']))
@@ -23,7 +23,7 @@ if(isset($_POST['login']))
 
     if($database->login($email,$password,$remember))
     {
-      header('location:index1.php');
+      header('location:index.php');
     }
 }
 ?>
@@ -43,13 +43,14 @@ if(isset($_POST['login']))
   <link rel="stylesheet" href="css/bootstrap1.min.css">
   <script src="js/jquery1.min.js"></script>
   <script src="js/bootstrap2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 </head>
 <style>
   body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=email], input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -58,7 +59,7 @@ input[type=text], input[type=password] {
   background: white;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=email]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -118,68 +119,38 @@ button:hover {
 <body>
 
 <!-- Navbar -->
-<nav class="navbar1 navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button> -->
-      <a class="navbar-brand1" href="#">Den</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="ya" href="#">Beranda</a></li>
-        <li><a href="#">Cari Den</a></li>
-        <li><a href="#">Tentang Den</a></li>
-        <li><a href="#">Masuk</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<?php include "header.php";?>
 
 <div class="container-fluid bg-3">
-  <div class="col-md-4">
-      <div class="konten">
-        <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-          <!-- <img src="Star.png">
-          <div class="caption">
-            <h2 id="nama">666</h2>
-            <p>Homestay Seekers</p>
-          </div> -->
-        <!-- </a> -->
-      </div>
-    </div>
-    <div class="col-md-4" style="padding-top: 100px;">
-      <div class="konten">
+    <div class="col-md-6" style="padding-top: 100px;">
+      <div class="konten user-input">
         <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
           <div class="caption">
             <p>Masuk ke Den</p>
             <h2 id="reg">Sign In</h2>
           </div>
-          <img src="yeh.png">
+          <img src="img/yeh.png">
         <!-- </a> -->
       </div>
     </div>
-    <div class="col-md-4">
-       <form method="post" action="" style="border:1px solid #ccc; width: 360px; border-radius: 5px; background-color:#f1f1f1 ">
+    <div class="col-md-6">
+       <form method="post" action="" style="border:1px solid #ccc; width: 360px; border-radius: 5px; background-color:#f1f1f1" name="login">
           <div class="biodata" style="padding: 20px;">
             <!-- <h1>Daftar</h1>
             <p>Silakan isi formulir ini untuk membuat akun.</p> -->
             <br>
             <label for="email"><b>E-mail</b></label>
-            <input type="text" placeholder="Enter E-mail" name="email" required>
+            <input type="email" id="email" placeholder="Enter E-mail" name="email" required>
 
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <br><label for="password"><b>Password</b></label>
+            <input type="password" id="pass" placeholder="Enter Password" name="password" required>
             
-            <label>
+            <br><label>
               <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
             </label>
             <p>Belum pernah mendaftar? <a href="register.php" style="color:dodgerblue">Daftar Sekarang</a></p>
             <div class="clearfix">
-              <button type="submit" name="login" class="signupbtn">Sign In</button>
+              <button id="submit" type="submit" name="login" class="signupbtn">Sign In</button>
             </div>
           </div>
         </form>
@@ -187,18 +158,36 @@ button:hover {
   </div>
 </div>
 
-<!-- Seventh Container -->
-<div class="container-fluid bg-7">
-  <h3>Alamat</h3>
-  <p>Jl. Raya Kampus Unud<br>Bukit Jimbaran, Badung</p>
-  <h3>Telp</h3>
-  <p>081999877909</p>
-</div>
-
-<!-- Footer -->
-<footer class="bg-8 text-center">
-  <p>Den</a></p> 
-</footer>
+<?php include "footer.php";?>
 
 </body>
+<script>
+$(function() {
+  $('form[name="login"]').validate({
+    rules: {
+      email: {
+        required: true,
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 8
+      }
+    },
+    messages: {
+      password: {
+        required: "Password belum diisi",
+        minlength: "Password harus lebih dari 8 karakter"
+      },
+      email: {
+        required: "Email belum diisi",
+        email: "Email tidak valid"
+      }
+    },
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+</script>
 </html>

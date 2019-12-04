@@ -11,9 +11,9 @@ class database{
 	}
 
 
-	function register($name,$email,$password)
+	function register($name,$email,$telp,$password)
 	{	
-		$insert = mysqli_query($this->koneksi,"INSERT INTO den_user(user_name,user_password,user_email) values('$name','$password','$email')");
+		$insert = mysqli_query($this->koneksi,"INSERT INTO den_user(user_name,user_password,user_email,user_notelp) values('$name','$password','$email','$telp')");
 		$this->login($email,$password,FALSE);
 		return $insert;
 	}

@@ -1,9 +1,5 @@
   <?php 
-  session_start();
-    if(isset($_SESSION['is_login']))
-    {
-      header('location:index1.php');
-    }
+    session_start();
   ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -13,12 +9,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap.min.css">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap1.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery1.min.js"></script>
     <script src="js/bootstrap2.min.js"></script>
   </head>
@@ -40,24 +35,24 @@
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
-        <div class="item active">
-          <img src="homepage.png"style="width:100%;">
+        <div class="item active" style="height:93vh;">
+          <img src="img/homepage.png"style="object-fit: contain;">
         <div class="carousel-caption">
           <h3>AKHIRNYA BISA YA TUHAN</h3>
           <p>om santhi, santhi, santhi om</p>
         </div>
         </div>
 
-        <div class="item">
-          <img src="homepage.png"style="width:100%;">
+        <div class="item" style="height:93vh;">
+          <img src="img/homepage.png"style="object-fit:contain;">
           <div class="carousel-caption">
           <h3>YES!!!!!!!!!!!!!!!!!!!!!!!!</h3>
           <p>berhasil, yahoooo...</p>
         </div>
         </div>
       
-        <div class="item">
-          <img src="Test1.jpg"style="width:100%;">
+        <div class="item" style="height:93vh;">
+          <img src="img/Test1.jpg"style="object-fit:contain;width:100vw;">
           <div class="carousel-caption">
           <h3>Oh</h3>
           <p>yes</p>
@@ -86,7 +81,7 @@
             <div class="caption">
               <p>Apa saja yang bisa didapat di</p>
               <h3 id="nama">Den <br>
-              <img src="yeh.png"></h3>
+              <img src="img/yeh.png"></h3>
               <p>Booking ribuan homestay yang terdaftar pada Den</p>
             </div>
         </div>
@@ -94,7 +89,9 @@
       <div class="col-md-3">
         <div class="konten">
           <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <div style="height: 138px;">
+              <img src="img/booking.jpg" style="object-fit: cover;width:250px;">
+            </div>
             <div class="caption">
               <h5 id="nama">Booking Homestay</h5>
               <p>Gak tau isi apa</p>
@@ -105,7 +102,7 @@
       <div class="col-md-3">
         <div class="konten">
         <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <img src="img/Test1.jpg">
             <div class="caption">
               <h5 id="nama">Cari Den</h5>
               <p>Apalagi ini</p>
@@ -116,7 +113,7 @@
       <div class="col-md-3">
         <div class="konten">
         <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <img src="img/Test1.jpg">
             <div class="caption">
               <h5 id="nama">Premium Owner</h5>
               <p>Apalagi ini</p>
@@ -129,39 +126,32 @@
 
   </div>
 
-  <!-- Third Container -->
-  <div class="container-fluid bg-3 text-center">
+  <div class="container-fluid bg-3 text-center" style="width:50vw;">
     <div class="col-md-4">
         <div class="konten">
-          <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Star.png">
+            <img src="img/Star.png">
             <div class="caption">
               <h2 id="nama">666</h2>
               <p>Homestay Seekers</p>
             </div>
-          <!-- </a> -->
         </div>
       </div>
       <div class="col-md-4">
         <div class="konten">
-          <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Globe.png">
+            <img src="img/Globe.png">
             <div class="caption">
               <h2 id="nama">5</h2>
               <p>Kota</p>
             </div>
-          <!-- </a> -->
         </div>
       </div>
       <div class="col-md-4">
         <div class="konten">
-        <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="City.png">
+            <img src="img/City.png">
             <div class="caption">
               <h2 id="nama">2390</h2>
               <p>Homestay</p>
             </div>
-          <!-- </a> -->
         </div>
       </div>
     </div>
@@ -169,13 +159,13 @@
 
   <!-- Fourth Container (Grid) -->
   <div class="container-fluid bg-4 text-center">    
-    <h5>Den</h5><h3 class="margin">Yang terpopuler <br><img src="yeh.png"></h3>
+    <h5>Den</h5><h3 class="margin">Yang terpopuler <br><img src="img/yeh.png"></h3>
     <div class="container">
     <div class="row">
       <div class="col-md-4">
         <div class="konten">
           <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <img src="img/Test1.jpg">
             <div class="caption">
               <p>666K/Kamar</p>
               <p id="nama">Homestay Denny</p>
@@ -187,7 +177,7 @@
       <div class="col-md-4">
         <div class="konten">
           <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <img src="img/Test1.jpg">
             <div class="caption">
               <p>Gratis/Kamar</p>
               <p id="nama">Homestay Yuriko</p>
@@ -199,7 +189,7 @@
       <div class="col-md-4">
         <div class="konten">
         <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <img src="img/Test1.jpg">
             <div class="caption">
               <p>Gratis/Kamar</p>
               <p id="nama">Homestay Teguh</p>
@@ -214,13 +204,13 @@
 
   <!-- Fifth Container -->
   <div class="container-fluid bg-5 text-center">
-    <h5>Testimoni</h5><h3 class="margin">Pengguna Den <br><img src="yeh.png"></h3>
+    <h5>Testimoni</h5><h3 class="margin">Pengguna Den <br><img src="img/yeh.png"></h3>
     <div class="container">
     <div class="row">
       <div class="col-md-4">
         <div class="thumbnail">
           <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <img src="img/Test1.jpg">
             <div class="caption">
               <p id="nama">Denny</p>
               <p>Denny suka bermain game</p>
@@ -231,7 +221,7 @@
       <div class="col-md-4">
         <div class="thumbnail">
           <!-- <a href="/w3images/nature.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <img src="img/Test1.jpg">
             <div class="caption">
               <p id="nama">Yuriko</p>
               <p>Gak tau manusia ini suka apa</p>
@@ -242,7 +232,7 @@
       <div class="col-md-4">
         <div class="thumbnail">
           <!-- <a href="/w3images/nature.jpg" target="_blank"> -->
-            <img src="Test1.jpg">
+            <img src="img/Test1.jpg">
             <div class="caption">
               <p id="nama">Teguh</p>
               <p>Apalagi ini</p>
@@ -254,7 +244,18 @@
   </div>
   </div>
 
-  <?php include 'footer.php'; ?>
+ <!-- Sixth Container -->
+  <div class="bg-6 text-center">
+    <h1>Coba pengalaman dengan Den sekarang!</h1>
+    <?php
+      if(isset($_SESSION['is_login']))
+        echo '<button><a href="register.php">Daftar</a></button>';
+      else
+        echo '<button><a href="search.php">Explore</a></button>';
+    ?>
+  </div>
+
+  <?php include "footer.php";?>
 
   </body>
   </html>
