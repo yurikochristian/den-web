@@ -17,7 +17,7 @@
     <script src="js/jquery1.min.js"></script>
     <script src="js/bootstrap2.min.js"></script>
   </head>
-  <body>
+  
 
   <!-- Navbar -->
   <?php include 'header.php';?>
@@ -249,9 +249,9 @@
     <h1>Coba pengalaman dengan Den sekarang!</h1>
     <?php
       if(isset($_SESSION['is_login']))
-        echo '<button><a href="register.php">Daftar</a></button>';
-      else
         echo '<button><a href="search.php">Explore</a></button>';
+      else
+        echo '<button><a href="register.php">Daftar</a></button>';
     ?>
   </div>
 

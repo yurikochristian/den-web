@@ -11,9 +11,10 @@ if(isset($_POST['register']))
     $name = $_POST['name'];
     $telp = $_POST['telp'];
     $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+    require("PHPMailer-master/src/sendmail.php");
     if($database->register($name,$email,$telp,$password))
     {
-        header('location:index.php');
+        header('location:register-success.php');
     }
 }
 
@@ -105,7 +106,6 @@ button:hover {
   }
 }
 </style>
-<body>
 
 <!-- Navbar -->
 <?php include "header.php";?>

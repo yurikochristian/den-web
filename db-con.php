@@ -10,17 +10,16 @@ class database{
 		$this->koneksi = mysqli_connect($this->host, $this->username, $this->password,$this->database);
 	}
 
-
 	function register($name,$email,$telp,$password)
 	{	
-		$insert = mysqli_query($this->koneksi,"INSERT INTO den_user(user_name,user_password,user_email,user_notelp) values('$name','$password','$email','$telp')");
+		$insert = mysqli_query($this->koneksi,"INSERT INTO den_user(user_name,user_password,user_email,user_notelp,user_role) values('$name','$password','$email','$telp','user')");
 		$this->login($email,$password,FALSE);
 		return $insert;
 	}
 
 	function login($email,$password,$remember)
 	{
-		$query = mysqli_query($this->koneksi,"select * from den_user where user_email='$email'");
+		$query = mysqli_query($this->koneksi,"select * from den_user where user_email='$email' AND email_verified='yes'");
 		$data_user = $query->fetch_array();
 		if(password_verify($password,$data_user['user_password']))
 		{
@@ -31,6 +30,7 @@ class database{
 			}
 			$_SESSION['email'] = $email;
 			$_SESSION['nama'] = $data_user['user_name'];
+			$_SESSION['role'] = $data_user['user_role'];
 			$_SESSION['is_login'] = TRUE;
 			return TRUE;
 		}
@@ -45,6 +45,4 @@ class database{
 		$_SESSION['is_login'] = TRUE;
 	}
 } 
-
-
 ?>

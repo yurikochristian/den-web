@@ -162,32 +162,34 @@ button:hover {
 
 </body>
 <script>
-$(function() {
-  $('form[name="login"]').validate({
-    rules: {
-      email: {
-        required: true,
-        email: true
+function login(
+  var email=$("#email").val();
+  var pass=$("#pass").val();
+  if(email!="" && pass!="")
+  {
+    $.ajax({
+      type:'post',
+      url:'login.php',
+      data:{
+        login: "login",
+        email: email,
+        password: pass
       },
-      password: {
-        required: true,
-        minlength: 8
+      success:function(response){
+        if(response=="success")
+        {
+          window.location.href="index.php";
+        }
+        else
+        {
+          alert("Username or password invalid!");
+        }
       }
-    },
-    messages: {
-      password: {
-        required: "Password belum diisi",
-        minlength: "Password harus lebih dari 8 karakter"
-      },
-      email: {
-        required: "Email belum diisi",
-        email: "Email tidak valid"
-      }
-    },
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
-});
+    });
+  }
+  else{
+    alert("Please Fill All The Details");
+  }
+)
 </script>
 </html>

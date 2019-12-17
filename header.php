@@ -1,4 +1,9 @@
-<nav class="navbar1 navbar-default">
+<?php 
+  if(!isset($_SESSION))
+    session_start();
+?>
+<body style="margin-top: 51px;">
+<nav class="navbar1 navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand1" href="index.php">Den</a>
