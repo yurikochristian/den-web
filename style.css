@@ -151,6 +151,19 @@
     color: #ffffff;
     height: 500px;
   }
+
+  .carousel-inner button{
+    background-color: #08AEEA;
+    border: 0px;
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+  }
+
+  .carousel-inner button a{
+    color: white; 
+  }
+
   .bg-6 h1{
     padding-top: 350px;  
   }
@@ -162,7 +175,6 @@
   }
   .bg-6 button a{
     color: white;
-    text-decoration: 
   }
   .bg-7 { 
     background-color: black; 

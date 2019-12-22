@@ -37,25 +37,40 @@
       <div class="carousel-inner">
         <div class="item active" style="height:93vh;">
           <img src="img/homepage.png"style="object-fit: contain;">
-        <div class="carousel-caption">
-          <h3>AKHIRNYA BISA YA TUHAN</h3>
-          <p>om santhi, santhi, santhi om</p>
+        <div class="carousel-caption" style="padding-bottom: 300px !important;">
+          <h1>SELAMAT DATANG!</h1>
+          <?php
+            if(isset($_SESSION['is_login']))
+              echo '<button><a href="search.php">Explore</a></button>';
+            else
+              echo '<button><a href="register.php">Daftar</a></button>';
+          ?>
         </div>
         </div>
 
         <div class="item" style="height:93vh;">
           <img src="img/homepage.png"style="object-fit:contain;">
-          <div class="carousel-caption">
-          <h3>YES!!!!!!!!!!!!!!!!!!!!!!!!</h3>
-          <p>berhasil, yahoooo...</p>
+          <div class="carousel-caption" style="padding-bottom: 300px !important;">
+          <h1>Rasakan mudahnya mencari homestay.</h1>
+          <?php
+            if(isset($_SESSION['is_login']))
+              echo '<button><a href="search.php">Explore</a></button>';
+            else
+              echo '<button><a href="register.php">Daftar</a></button>';
+          ?>
         </div>
         </div>
       
         <div class="item" style="height:93vh;">
           <img src="img/Test1.jpg"style="object-fit:contain;width:100vw;">
-          <div class="carousel-caption">
-          <h3>Oh</h3>
-          <p>yes</p>
+          <div class="carousel-caption" style="padding-bottom: 300px !important;">
+          <h1>Coba pengalaman dengan DEN sekarang!</h1>
+          <?php
+            if(isset($_SESSION['is_login']))
+              echo '<button><a href="search.php">Explore</a></button>';
+            else
+              echo '<button><a href="register.php">Daftar</a></button>';
+          ?>
         </div>
         </div>
       </div>
@@ -82,7 +97,7 @@
               <p>Apa saja yang bisa didapat di</p>
               <h3 id="nama">Den <br>
               <img src="img/yeh.png"></h3>
-              <p>Booking ribuan homestay yang terdaftar pada Den</p>
+              <p>Nikmati fitur-fitur pada Den</p>
             </div>
         </div>
       </div>
@@ -93,8 +108,8 @@
               <img src="img/booking.jpg" style="object-fit: cover;width:250px;">
             </div>
             <div class="caption">
-              <h5 id="nama">Booking Homestay</h5>
-              <p>Gak tau isi apa</p>
+              <h3 id="nama">Booking Homestay</h3>
+              <p>Jangan sampai kehilangan homestay kamu inginkan</p>
             </div>
           <!-- </a> -->
         </div>
@@ -104,8 +119,8 @@
         <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
             <img src="img/Test1.jpg">
             <div class="caption">
-              <h5 id="nama">Cari Den</h5>
-              <p>Apalagi ini</p>
+              <h3 id="nama">Cari Den</h3>
+              <p>Tidak perlu bingung lagi untuk mencari homestay yang terbaik untuk-mu</p>
             </div>
           <!-- </a> -->
         </div>
@@ -115,8 +130,8 @@
         <!-- <a href="/w3images/lights.jpg" target="_blank"> -->
             <img src="img/Test1.jpg">
             <div class="caption">
-              <h5 id="nama">Premium Owner</h5>
-              <p>Apalagi ini</p>
+              <h3 id="nama">Premium Owner</h3>
+              <p>Promosikan homestay-mu agar berbda dengan homestay yang lain</p>
             </div>
           <!-- </a> -->
         </div>
