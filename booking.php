@@ -1,30 +1,14 @@
 <?php
+session_start();
+if(! isset($_SESSION['is_login'])){
+  header("location:login.php");
+}
 include_once('db-con.php');
 $database = new database();
-$query="select * from den_den";
-if(isset($_POST['filter'])){
-  $keyword=$_POST['katakunci'];
-  $option=$_POST['option'];
-  $maxperson=$_POST['maxperson'];
-  $terendah=$_POST['hargaterendah'];
-  $tertinggi=$_POST['hargatertinggi'];
-  $conditions=array();
-  if(! empty($keyword))
-    $conditions[] = "name LIKE '%$keyword%'";
-  if(! empty($option))
-    $conditions[] = "region='$option'";
-  if(! empty($maxperson))
-    $conditions[] = "max_pax>='$maxperson'";
-  if(! empty($terendah))
-    $conditions[] = "price>=$terendah";
-  if(! empty($tertinggi))
-    $conditions[] = "price<=$tertinggi";
-  $query;
-  if (count($conditions) > 0) {
-    $query .= " WHERE " . implode(' AND ', $conditions);
-  }
-}
-  $result = mysqli_query($database->koneksi, $query);
+$id = $_GET['id'];
+$query="select * from den_den where id_den=$id";
+$result = mysqli_query($database->koneksi, $query);
+$result = $result->fetch_array();
 ?>
 
 <!DOCTYPE html>
@@ -99,22 +83,22 @@ button:hover {
 <?php include "header.php";?>
 
 <div class="container-fluid bg-3">
-  <div class="col-md-4" style="padding-top: 350px;">
+  <div class="col-md-2" style="padding-top: 350px;">
       <div class="konten">
       </div>
     </div>
-    <div class="col-md-4" style="padding-top: 125px; padding-left: 0px;">
+    <div class="col-md-6" style="padding-top: 125px; padding-left: 0px;">
       <div class="konten">
           <div class="caption">
             <p>Booking</p>
-            <h2 id="reg">Homestay Denny</h2>
+            <h2 id="reg"><?php echo $result['name'];?></h2>
             <img src="img/yeh.png">
-            <p>Isi data menginapmu di sebelah kanan</p>
+            <p>Isi data menginapmu!</p>
           </div>
       </div>
     </div>
     <div class="col-md-4">
-       <form action="#" style="border:1px solid #ccc; width: 360px; border-radius: 5px; background-color:#f1f1f1 ">
+       <form action="booking-success.php" method="post" style="border:1px solid #ccc; width: 360px; border-radius: 5px; background-color:#f1f1f1 " name="booking">
           <div class="biodata" style="padding: 20px;">
             <br>
 
@@ -132,9 +116,9 @@ button:hover {
                 <td colspan="3"><input type="text" name="jumlahmenginap" placeholder="Jumlah Menginap" required> 
               </tr>
             </table>
-            
+            <input type="hidden" name="id_den" value="<?php echo $id;?>">
             <div class="clearfix">
-              <button type="submit" class="booking">Booking</button>
+              <button name="submit" type="submit" class="booking">Booking</button>
             </div>
           </div>
         </form>

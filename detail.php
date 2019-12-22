@@ -5,6 +5,11 @@ $id = $_GET['id'];
 $query="select * from den_den where id_den=$id";
 $result = mysqli_query($database->koneksi,$query);
 $hs = $result->fetch_array();
+$result = mysqli_query($database->koneksi,"SELECT * FROM den_rules WHERE id_den=$id");
+$rate_res = mysqli_query($database->koneksi,"SELECT * FROM den_rating
+                                            LEFT JOIN den_user
+                                            ON den_rating.id_user = den_user.id_user 
+                                            WHERE den_rating.id_den=$id");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +46,7 @@ $hs = $result->fetch_array();
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
       </ol>
 
       <!-- Wrapper for slides -->
@@ -48,6 +54,12 @@ $hs = $result->fetch_array();
         <div class="item active" style="height:93vh;">
           <img src="img/homepage.png"style="object-fit: contain;">
         <div class="carousel-caption">
+        </div>
+        </div>
+
+        <div class="item" style="height:93vh;">
+          <img src="img/homepage.png"style="object-fit:contain;">
+          <div class="carousel-caption">
         </div>
         </div>
 
@@ -77,8 +89,8 @@ $hs = $result->fetch_array();
 
 <div style="padding: 50px 200px 50px 200px;">
   <h1><?php echo $hs['name'];?></h1>
-  <h3 style="float: right; background-color: #FED701; width: 220px; height: 50px; text-align: center; padding: 10px;">Rp 200000<span style="font-size: 15px;">/hari</span></h3>
-  <h5 style="background-color: #FF9900; width: 150px; height: 40px; text-align: center; padding: 10px;">Max Person: 2</h5>
+  <h3 style="float: right; background-color: #FED701; width: 220px; height: 50px; text-align: center; padding: 10px;">Rp <?php echo $hs['price'];?><span style="font-size: 15px;">/hari</span></h3>
+  <h5 style="background-color: #FF9900; width: 150px; height: 40px; text-align: center; padding: 10px;">Max Person: <?php echo $hs['max_pax'];?></h5>
 </div>
 
 <div style="padding: 50px 200px 50px 200px;" id="tabs">
@@ -87,29 +99,35 @@ $hs = $result->fetch_array();
     <li><a href="#tabs-2">Peraturan</a></li>
     <li><a href="#tabs-3">Rating dan Review</a></li>
   </ul>
-  <div id="tabs-1"><p>Disini ditampilkan deskripsi dari setiap homestay, baik itu fasilitas yang disediakan pada homestay, dan juga fasilitas-fasilitas yang didapatkan penginap saat bermalam di homestay ini.</p></div>
-  <div id="tabs-2"><p>Peraturan Homestay Pak Bambang: <br><br>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br><br>2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br><br>3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+  <div id="tabs-1"><p><?php echo $hs['description'];?></p></div>
+  <div id="tabs-2">
+    <?php 
+    $i = 1;
+    while($rule = mysqli_fetch_assoc($result)){echo "<p>".$i.". ".$rule['den_rule'];$i++;}?>
+  </div>
   <div id="tabs-3">
   <table>
     <label>Rating and Reviews</label>
+    <?php while($rating = mysqli_fetch_assoc($rate_res)){?>
     <tr style="border-bottom: solid 5px white;">
-      <td style="padding:20px 0 20px 0; background-color: #F4F4F4; width: 100px; text-align: right;">
+      <td style="padding:20px 0 20px 0; background-color: #F4F4F4; width: 130px; text-align: right;">
         <img style="border-radius: 50px; height: 70px; width: 70px;" src="img/Test1.jpg">
         <br>
-        <label style="color: blue;">Denny</label>
+        <label style="color: blue;"><?php echo $rating['user_name'];?></label>
         <br>
-        <label>4.5/5</label>
+        <label><?php echo $rating['rating'];?>/5</label>
       </td>
-      <td style="background-color: #F4F4F4;">
+      <td style="background-color: #F4F4F4;width:calc(100%-130px);">
         <div style="padding:20px; margin-left: 20px; width: 95%; height: 100px; background-color: #FFFFFF;">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+          <p><?php echo $rating['review'];?></p>
         </div>
       </td>
     </tr>
+    <?php } ?>
   </table>
   </div>  
   <center>
-  <a href="booking.php"><button style="background-color: #FF9900; color: #FFFFFF; width: 100px; height: 50px; padding: 15px; margin-top: 10px; border: none;">Booking</button></a>
+  <a href="booking.php?id=<?php echo $id;?>"><button style="background-color: #FF9900; color: #FFFFFF; width: 100px; height: 50px; padding: 15px; margin-top: 10px; border: none;">Booking</button></a>
   </center>
 </div>
 
