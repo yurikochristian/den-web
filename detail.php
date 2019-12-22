@@ -1,3 +1,11 @@
+<?php
+include_once("db-con.php");
+$database = new database();
+$id = $_GET['id'];
+$query="select * from den_den where id_den=$id";
+$result = mysqli_query($database->koneksi,$query);
+$hs = $result->fetch_array();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +76,7 @@
     </div>
 
 <div style="padding: 50px 200px 50px 200px;">
-  <h1>DENNY HOMESTAY</h1>
+  <h1><?php echo $hs['name'];?></h1>
   <h3 style="float: right; background-color: #FED701; width: 220px; height: 50px; text-align: center; padding: 10px;">Rp 200000<span style="font-size: 15px;">/hari</span></h3>
   <h5 style="background-color: #FF9900; width: 150px; height: 40px; text-align: center; padding: 10px;">Max Person: 2</h5>
 </div>
@@ -84,8 +92,8 @@
   <div id="tabs-3">
   <table>
     <label>Rating and Reviews</label>
-    <tr>
-      <td style="background-color: #F4F4F4; width: 100px; text-align: right;">
+    <tr style="border-bottom: solid 5px white;">
+      <td style="padding:20px 0 20px 0; background-color: #F4F4F4; width: 100px; text-align: right;">
         <img style="border-radius: 50px; height: 70px; width: 70px;" src="img/Test1.jpg">
         <br>
         <label style="color: blue;">Denny</label>
@@ -93,35 +101,7 @@
         <label>4.5/5</label>
       </td>
       <td style="background-color: #F4F4F4;">
-        <div style=" margin-left: 20px; width: 95%; height: 100px; background-color: #FFFFFF;">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td style="background-color: #F4F4F4; width: 100px; text-align: right;">
-        <img style="border-radius: 50px; height: 70px; width: 70px;" src="img/Test1.jpg">
-        <br>
-        <label style="color: blue;">Denny</label>
-        <br>
-        <label>4.5/5</label>
-      </td>
-      <td style="background-color: #F4F4F4;">
-        <div style=" margin-left: 20px; width: 95%; height: 100px; background-color: #FFFFFF;">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td style="background-color: #F4F4F4; width: 100px; text-align: right;">
-        <img style="border-radius: 50px; height: 70px; width: 70px;" src="img/Test1.jpg">
-        <br>
-        <label style="color: blue;">Denny</label>
-        <br>
-        <label>4.5/5</label>
-      </td>
-      <td style="background-color: #F4F4F4;">
-        <div style=" margin-left: 20px; width: 95%; height: 100px; background-color: #FFFFFF;">
+        <div style="padding:20px; margin-left: 20px; width: 95%; height: 100px; background-color: #FFFFFF;">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
         </div>
       </td>
