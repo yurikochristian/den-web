@@ -31,6 +31,7 @@ class database{
 			$_SESSION['email'] = $email;
 			$_SESSION['nama'] = $data_user['user_name'];
 			$_SESSION['role'] = $data_user['user_role'];
+			$_SESSION['id'] = $data_user['id_user'];
 			$_SESSION['is_login'] = TRUE;
 			return TRUE;
 		}

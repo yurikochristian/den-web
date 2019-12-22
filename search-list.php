@@ -7,7 +7,7 @@ echo
                 <div>
                     <tr>
                         <div style=\"position: relative;\">
-                            <td><img src=\"img/Test1.jpg\"></td>
+                            <td><img src=\"img/Test1.jpg\" style=\"height:150px;\"></td>
                             <div class=\"absolute\" style=\"position: absolute; margin-top: 40px; left:130px; width: auto; height: auto; background-color: #FED701; padding: 10px;\">" . $den['region'] . "</div>
                             </div>
                             <td style=\"text-align: left; padding: 50px;\">
@@ -21,8 +21,7 @@ echo
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><label style=\"background-color: #FED701; padding: 10px;\"><strong style=\"font-size:30px;\">Rp " . $den['price'] . "</strong>/Hari</label></td>
-                                        <td><label style=\"background-color: #FF9900; padding: 10px;\">Max Person: " . $den['max_pax'] . "</label></td>
+                                        <td style=\"display:flex;\"><label style=\"background-color: #FED701; padding: 10px;\"><strong style=\"font-size:30px;\">Rp " . $den['price'] . "</strong>/Hari</label><label style=\"background-color: #FF9900; padding: 10px;\">Max Person: " . $den['max_pax'] . "</label></td>
                                     </tr>
                                 </table>
                             </td>

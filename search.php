@@ -24,6 +24,13 @@ if(isset($_POST['filter'])){
     $query .= " WHERE " . implode(' AND ', $conditions);
   }
 }
+  $halaman = 10;
+  $page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
+  $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
+  $result = mysqli_query($database->koneksi, $query);
+  $total = mysqli_num_rows($result);
+  $pages = ceil($total/$halaman); 
+  $query .= " LIMIT $mulai, $halaman";
   $result = mysqli_query($database->koneksi, $query);
 ?>
 <!DOCTYPE html>
@@ -101,31 +108,30 @@ label{
 <?php include "header.php"; ?>
 
 <div class="container-fluid bg-3">
-    <div class="col-md-8" style="padding-top: 125px; padding-left: 200px;">
+    <div class="col-md-7" style="padding-top: 125px; padding-left: 200px;">
       <div class="konten">
           <div class="caption">
             <p>Cari</p>
             <h2 id="reg">Den</h2>
             <img src="img/yeh.png">
-            <p>Cari homestay sesuai kebutuhanmu</p>
+            <p style="color:grey;">Cari homestay sesuai kebutuhanmu</p>
             <br><br><br><br><br><br>
             <img src="img/asset1.png">
           </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
        <form action="search.php" method="post" style="border:1px solid #ccc; width: 360px; border-radius: 5px; background-color:#f1f1f1 " name="filter">
           <div class="biodata" style="padding: 20px;">
             <br>
             <table width="315px">
               <tr>
-                <td colspan="2"><label for="katakunci"><b>Kata Kunci</b></label>
-                <input type="text" name="katakunci" value=""></td>
+                <td colspan="2"><input type="text" name="katakunci" placeholder="Kata Kunci" value=""></td>
               </tr>
               <tr>
                 <td>
-                    <select style="width: 150px;" name="option">
-                      <option value="">Region</option>
+                    <select style="width: 150px;height: 47px;border:none;margin-top:-25px;" name="option">
+                      <option value="" >Region</option>
                       <?php 
                             $query2 = "SELECT DISTINCT region FROM den_den";
                             $rs = mysqli_query($database->koneksi, $query2);
@@ -151,22 +157,29 @@ label{
     </div>
   </div>
 </div>
-<?php while($den = mysqli_fetch_assoc($result)){ require "search-list.php"; } ?>
-<!-- <footer aria-label=\"...\">
-<ul class=\"pagination\">
-<li class=\"page-item disabled\">
-  <a class=\"page-link\" href=\"#\" tabindex=\"-1\">Previous</a>
-</li>
-<li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li>
-<li class=\"page-item active\">
-  <a class=\"page-link\" href=\"#\">2 <span class=\"sr-only\">(current)</span></a>
-</li>
-<li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>
-<li class=\"page-item\">
-  <a class=\"page-link\" href=\"#\">Next</a>
-</li>
+<?php
+while($den = mysqli_fetch_assoc($result)){
+  require "search-list.php";
+} 
+?>
+<center>
+<nav aria-label="...">
+<ul class="pagination">
+<?php
+if($pages>1){
+  for($i=1;$i<=$pages;$i++){
+    if($i == $page){
+      echo "<li class='page-item active'><a class='page-link'>$i</a></li>";
+    }
+    else{
+      echo "<li class='page-item'><a class='page-link' href='?halaman=$i'>$i</a></li>";
+    }
+  }
+}
+?>
 </ul>
-</footer> -->
+</nav>
+</center>
 <?php include "footer.php";?>
 </body>
 </html>

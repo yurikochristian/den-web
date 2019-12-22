@@ -1,3 +1,32 @@
+<?php
+include_once('db-con.php');
+$database = new database();
+$query="select * from den_den";
+if(isset($_POST['filter'])){
+  $keyword=$_POST['katakunci'];
+  $option=$_POST['option'];
+  $maxperson=$_POST['maxperson'];
+  $terendah=$_POST['hargaterendah'];
+  $tertinggi=$_POST['hargatertinggi'];
+  $conditions=array();
+  if(! empty($keyword))
+    $conditions[] = "name LIKE '%$keyword%'";
+  if(! empty($option))
+    $conditions[] = "region='$option'";
+  if(! empty($maxperson))
+    $conditions[] = "max_pax>='$maxperson'";
+  if(! empty($terendah))
+    $conditions[] = "price>=$terendah";
+  if(! empty($tertinggi))
+    $conditions[] = "price<=$tertinggi";
+  $query;
+  if (count($conditions) > 0) {
+    $query .= " WHERE " . implode(' AND ', $conditions);
+  }
+}
+  $result = mysqli_query($database->koneksi, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
