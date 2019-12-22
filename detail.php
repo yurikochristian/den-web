@@ -27,17 +27,53 @@
 
 <!-- First Container -->
 <!-- <div class="container"> -->
-  <div class="container-fluid bg-1" style="background-image: url(img/Homepage.jpg); background-size: cover; height: 500px;">
-    <div style="background-color: #ffffff4d; color: black; width: 300px; height: auto; margin-left: 100px; padding: 20px;">
-      <p>Badung</p>
-      <h3>Homestay Denny</h3>
-      <img src="img/yeh.png">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active" style="height:93vh;">
+          <img src="img/homepage.png"style="object-fit: contain;">
+        <div class="carousel-caption">
+        </div>
+        </div>
+
+        <div class="item" style="height:93vh;">
+          <img src="img/homepage.png"style="object-fit:contain;">
+          <div class="carousel-caption">
+        </div>
+        </div>
+      
+        <div class="item" style="height:93vh;">
+          <img src="img/Test1.jpg"style="object-fit:contain;width:100vw;">
+          <div class="carousel-caption">
+        </div>
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon1">&#10140;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon2">&#10140;</span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <div class="absolute" style="position: absolute; margin-top: 270px; right: 400px; width: auto; height: auto; background-color: #FED701; padding: 10px;">200K/Kamar</div>
-    <div class="absolute" style="position: absolute; margin-top: 270px; right: 200px; width: auto; height: auto; background-color: #FF9900; padding: 10px;">Max Person: 3</div>
+
+<div style="padding: 50px 200px 50px 200px;">
+  <h1>DENNY HOMESTAY</h1>
+  <h3 style="float: right; background-color: #FED701; width: 220px; height: 50px; text-align: center; padding: 10px;">Rp 200000<span style="font-size: 15px;">/hari</span></h3>
+  <h5 style="background-color: #FF9900; width: 150px; height: 40px; text-align: center; padding: 10px;">Max Person: 2</h5>
 </div>
 
-<div style="padding: 50px;" id="tabs">
+<div style="padding: 50px 200px 50px 200px;" id="tabs">
   <ul>
     <li><a href="#tabs-1">Deskripsi</a></li>
     <li><a href="#tabs-2">Peraturan</a></li>

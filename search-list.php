@@ -21,7 +21,7 @@ echo
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style=\"display:flex;\"><label style=\"background-color: #FED701; padding: 10px;\"><strong style=\"font-size:30px;\">Rp " . $den['price'] . "</strong>/Hari</label><label style=\"background-color: #FF9900; padding: 10px;\">Max Person: " . $den['max_pax'] . "</label></td>
+                                        <td style=\"display:flex;\"><label style=\"background-color: #FED701; padding: 10px;\"><strong style=\"font-size:30px;\">Rp " . $den['price'] . "</strong>/Hari</label><label style=\"background-color: #FF9900; padding: 20px;\">Max Person: " . $den['max_pax'] . "</label></td>
                                     </tr>
                                 </table>
                             </td>
