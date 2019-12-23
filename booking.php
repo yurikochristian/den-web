@@ -113,7 +113,7 @@ button:hover {
                 <td colspan="3"><input type="text" name="lamamenginap" placeholder="Lama Menginap (Hari)" required> 
               </tr>
               <tr>
-                <td colspan="3"><input type="text" name="jumlahmenginap" placeholder="Jumlah Menginap" required> 
+                <td colspan="3"><input type="text" name="jumlahmenginap" placeholder="Jumlah Penginap" required> 
               </tr>
             </table>
             <input type="hidden" name="id_den" value="<?php echo $id;?>">

@@ -2,7 +2,7 @@
 $phpdate = strtotime( $den['book_date'] );
 $mysqldate = date( 'd-m-Y', $phpdate );
 echo
-    "<a href=\"http://localhost:8080/den-web/detail.php?id=" . $den['id_den'] . "\" style=\"text-decoration:none;\">
+    "<a href=\"http://localhost:8080/den-web/booking-detail.php?id=" . $den['book_id'] . "\" style=\"text-decoration:none;\">
     <div class=\"container-fluid bg-4 text-center\" style=\"padding-bottom: 0px !important; padding-top: 0px !important;\">
         <table class=\"pilih\">
                 <div>

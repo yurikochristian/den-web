@@ -1,5 +1,8 @@
 <?php
   session_start();
+  if($_SESSION['role'] != "admin"){
+    header("location:../oops.php");
+  }
 ?>
 <!DOCTYPE html>
 <html>

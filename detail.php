@@ -53,7 +53,8 @@ $rate_res = mysqli_query($database->koneksi,"SELECT * FROM den_rating
       <div class="carousel-inner">
         <div class="item active" style="height:93vh;">
           <img src="img/homepage.png"style="object-fit: contain;">
-        <div class="carousel-caption">
+        <div class="carousel-caption" style="padding-bottom: 310px;">
+        <center><h1 style="background-color: rgba(0,0,0,0.5); width: 350px;"><?php echo $hs['name'];?></h1></center>
         </div>
         </div>
 
@@ -117,7 +118,7 @@ $rate_res = mysqli_query($database->koneksi,"SELECT * FROM den_rating
         <br>
         <label><?php echo $rating['rating'];?>/5</label>
       </td>
-      <td style="background-color: #F4F4F4;width:calc(100%-130px);">
+      <td style="background-color: #F4F4F4;width:100%;">
         <div style="padding:20px; margin-left: 20px; width: 95%; height: 100px; background-color: #FFFFFF;">
           <p><?php echo $rating['review'];?></p>
         </div>

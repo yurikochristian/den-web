@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(! isset($_SESSION['is_login'])){
+  header("location:login.php");
+}
 include_once('db-con.php');
 $database = new database();
 $id=$_SESSION['id'];
