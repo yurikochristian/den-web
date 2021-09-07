@@ -1,4 +1,1 @@
-# Bangsat Kau
-# DENNY.
-
-
+Den-in Aja!
